@@ -1,0 +1,26 @@
+{
+    "builders": [{
+		"type": "azure-arm",
+		"client_id": "4768d916-c572-4ad2-aa16-ae7c084a446d",
+		"client_secret": "nE28Q~tQADQ.HrckAJ7ME5Ev9.WV8iwOXk6OXdeH",
+		"subscription_id": "6db10ff2-4463-40da-85ba-a658fafacd41",
+		"os_type": "Linux",
+		"image_publisher": "Canonical",
+		"image_offer": "UbuntuServer",
+		"image_sku": "18.04-LTS",
+		"managed_image_resource_group_name": "Azuredevops",
+		"managed_image_name": "ubuntuImage",
+		"build_resource_group_name": "AzuredevOps",
+		
+		"vm_size": "Standard_D2s_v3"
+	}],
+	"provisioners": [{
+		"inline": [
+			"echo 'Hello, World!' > index.html",
+			"nohup busybox httpd -f -p 80 &"
+		],
+		"inline_shebang": "/bin/sh -x",
+		"type": "shell"
+		
+	}]
+}
