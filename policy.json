@@ -1,0 +1,37 @@
+{
+   "if": {
+     "allOf": [
+	    {
+		   "field": "type",
+		   "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+		},
+		{
+		   "anyOf": [
+			{
+			   "field": "tags",
+			   "exists": false
+			},
+			{
+			   "value": "[length(field('tags'))]",
+			   "equals": 0
+			},
+			{
+    		   "field": "tags",
+			   "equals": ""
+			},
+			{
+			   "field": "tags",
+			   "equals": "{}"
+			},
+			{
+			   "value": "[length(field('tags'))]",
+			   "equals": ""
+			}
+		]
+	}
+	]
+},
+"then": {
+   "effect": "deny"
+   }
+}
